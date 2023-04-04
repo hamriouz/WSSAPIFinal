@@ -7,8 +7,8 @@ class FAQDomain:
 
     @staticmethod
     async def get_response(question):
-
-    # TODO
-    #  call model, ask question and get answer
+        return {}
+# TODO
+#  call model, ask question and get answer
 
     

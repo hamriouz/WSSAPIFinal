@@ -1,7 +1,7 @@
 # from Domain.Room import Room
 # from Util.Exceptions import IncompleteInformationException
-from FAQ.Util.Exceptions import NoQuestionAsked
-from FAQ.Domain.FAQ_domain import FAQDomain
+from Exceptions import NoQuestionAsked
+from FAQ_domain import FAQDomain
 
 class FAQHandler:
     def __new__(cls):

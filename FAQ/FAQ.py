@@ -2,9 +2,9 @@ import json
 
 from flask import Flask, request, jsonify, make_response
 
-from FAQ.Util.Exceptions import InvalidQuestionException, NoQuestionAsked
+from Exceptions import InvalidQuestionException, NoQuestionAsked
 
-from FAQ.Handler.FAQ_handler import FAQHandler
+from FAQ_handler import FAQHandler
 
 
 app = Flask(__name__)
