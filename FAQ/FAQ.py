@@ -1,3 +1,4 @@
+import asyncio
 import json
 
 from flask import Flask, request, jsonify, make_response
@@ -10,14 +11,13 @@ from FAQ_handler import FAQHandler
 app = Flask(__name__)
 
 
-@app.route('/FAQ/Ask', methods=['GET'])
-# do we need to check role?
+@app.route('/FAQ/Ask', methods=['POST'])
 # @check_role
-async def ask_question():
+def ask_question():
     try:
         request_handler = FAQHandler()
-        faq_input = await json.loads(request.data)
-        answer = await request_handler.get_response(faq_input)
+        faq_input = json.loads(request.data)
+        answer = request_handler.get_response(faq_input)
         return make_response(jsonify(answer), 200)
 
     except InvalidQuestionException:
@@ -27,3 +27,7 @@ async def ask_question():
     except NoQuestionAsked:
         message = {"No question asked! Please type in your question."}
         return make_response(jsonify(message), 401)
+
+
+if __name__ == '__main__':
+    asyncio.run(app.run(host="127.0.0.1", port="80"))
